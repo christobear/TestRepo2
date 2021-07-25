@@ -32,6 +32,9 @@ while (username == null){
   if(secretHash == "-952999088"){
     username = "Daniel"
   }
+  alert('Hello '+ username);
+  //document.getElementById("user").innerHTML = <h4>{username}</h4>;
+
 }
 // this is a function to convert any string to a Hash
 function StringToHash (s){
