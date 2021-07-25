@@ -41,6 +41,7 @@ document.getElementById("user").innerHTML += "<h4>You are logged in as " +userna
 function StringToHash (s){
   return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);              
 }
+
 document.getElementById("send-message").addEventListener("submit", postChat);
 function postChat(e) {
   e.preventDefault();
@@ -80,5 +81,11 @@ function ProcessReceivedMessage(msg){
     // Ignore
     
   }
+}
 
+document.getElementById("broadcast-buttons").addEventListener("submit", SendBNB);
+function SendBNB(e){
+  e.preventDefault();
+  // send entire blockchain out to everyone
+  console.log(username+": blockchain broadcast");
 }
