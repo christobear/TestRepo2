@@ -33,8 +33,7 @@ while (username == null){
     username = "Daniel"
   }
 }
-
-
+// this is a function to convert any string to a Hash
 function StringToHash (s){
   return s.split("").reduce(function(a,b){a=((a<<5)-a)+b.charCodeAt(0);return a&a},0);              
 }
