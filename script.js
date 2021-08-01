@@ -1,3 +1,6 @@
+//import {ProcessReceivedData} from "./receive.js";
+
+
 const firebaseConfig = {
     apiKey: "AIzaSyBGA_EVxfr-2H57rQaj4lxMrF8L-Qyv0ac",
     authDomain: "chatapp-f3315.firebaseapp.com",
@@ -20,6 +23,10 @@ while (username == null){
   secretString = JSON.stringify(secretJSON);
   secretHash = StringToHash(secretString);
   console.log(secretHash);
+  var user = Users.find(obj => {
+    return obj.hash === secretHash
+  });
+  console.log(user);
   if(secretHash == "-1600402064"){
     username = "Chris"
   }
@@ -62,26 +69,9 @@ const fetchChat = db.ref("messages/");
 fetchChat.on("child_added", function (snapshot) {
   const messages = snapshot.val();
   const msg = "<li>" + messages.usr + " :" + messages.msg + "</li>";
-  ProcessReceivedMessage(messages.msg);
+  ProcessReceivedData(messages.msg);
   document.getElementById("messages").innerHTML += msg;
 });
-
-function ProcessReceivedMessage(msg){
-  msgType = msg.substring(0,4);
-  parsedMsg = msg.substring(4,msg.length);
-  if(msgType == "BCB:"){
-    console.log('BCB received');
-  }else if(msgType == "NBB:"){
-    console.log('NBB received');
-  }else if(msgType == "NBT:"){
-    console.log('NBT received');
-  }else if(msgType == "BNB:"){
-    console.log('BNB received');
-  }else{
-    // Ignore
-    
-  }
-}
 
 document.getElementById("bnb").addEventListener("submit", SendBNB);
 function SendBNB(e){
