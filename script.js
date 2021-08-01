@@ -26,23 +26,11 @@ while (username == null){
   var user = Users.find(obj => {
     return obj.hash === secretHash
   });
-  console.log(user);
-  if(secretHash == "-1600402064"){
-    username = "Chris"
-  }
-  if(secretHash == "1561853380"){
-    username = "Evan"
-  }
-  if(secretHash == "-88367627"){
-    username = "Leo"
-  }
-  if(secretHash == "-952999088"){
-    username = "Daniel"
-  }
+  username = user.name;
 }
 
-alert('Hello '+ username);
-document.getElementById("user").innerHTML += "<h4>You are logged in as " +username+"</h4>";
+alert('Hello '+ user.name);
+document.getElementById("user").innerHTML += "<h4>You are logged in as " + user.name +"</h4> <br/> <h4> Wallet Balance:" + user.coins+ "</h4> <br/>";
 
 // this is a function to convert any string to a Hash
 function StringToHash (s){
@@ -73,22 +61,3 @@ fetchChat.on("child_added", function (snapshot) {
   document.getElementById("messages").innerHTML += msg;
 });
 
-document.getElementById("bnb").addEventListener("submit", SendBNB);
-function SendBNB(e){
-  e.preventDefault();
-  // send entire blockchain out to everyone
-  console.log(username+": blockchain broadcast");
-}
-
-document.getElementById("nbb").addEventListener("submit", SendNBB);
-function SendNBB(e){
-  e.preventDefault();
-  // send entire blockchain out to everyone
-  console.log(username+": new block broadcast");
-}
-document.getElementById("nbt").addEventListener("submit", SendNBT);
-function SendNBT(e){
-  e.preventDefault();
-  // send entire blockchain out to everyone
-  console.log(username+": transaction broadcast");
-}
