@@ -8,7 +8,9 @@ function ProcessReceivedData(msg){
     }else if(msgType == "NBT:"){
       console.log('NBT received');
     }else if(msgType == "BNB:"){
-      console.log('BNB received');
+      //console.log('BNB received');
+      //data = JSON.parse(parsedMsg);
+      //console.log(JSON.stringify(data.array.length));
     }else{
       // Ignore
       
