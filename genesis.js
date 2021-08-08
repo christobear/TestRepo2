@@ -22,9 +22,15 @@ var Blocks = {
         lastBlockHash: 0
       },
       transactions: [
-        { sender: "Chris", reciever: "Evan", amount: 100, senderBalance: 400, recieverBalance: 100 },
-        { sender: "Chris", reciever: "Leo", amount: 100, senderBalance: 300, recieverBalance: 100 },
-        { sender: "Chris", reciever: "Daniel", amount: 100, senderBalance: 200, recieverBalance: 100 },
+        { sender: "Chris", reciever: "Evan", amount: 95, senderBalance: 400, recieverBalance: 95, fee: 5 , signed: true },
+        { sender: "Chris", reciever: "Leo", amount: 95, senderBalance: 300, recieverBalance: 95, fee: 5, signed: true },
+        { sender: "Chris", reciever: "Daniel", amount: 95, senderBalance: 200, recieverBalance: 95, fee: 5, signed: true },
+      ],
+      balances: [
+        {user: "Chris", amount: 200},
+        {user: "Daniel", amount: 95},
+        {user: "Leo", amount: 95},
+        {user: "Evan", amount: 95},
       ]
     },
     {
@@ -35,8 +41,14 @@ var Blocks = {
         lastBlockHash: 0
       },
       transactions: [
-        { sender: "Chris", reciever: "Evan", amount: 100, senderBalance: 100, recieverBalance: 200 },
-        { sender: "Chris", reciever: "Leo", amount: 100, senderBalance: 0, recieverBalance: 100 },
+        { sender: "Chris", reciever: "Evan", amount: 95, senderBalance: 100, recieverBalance: 190, fee: 5, signed: true },
+        { sender: "Chris", reciever: "Leo", amount: 100, senderBalance: 0, recieverBalance: 190, fee: 5, signed: true },
+      ],
+      balances: [
+        {user: "Chris", amount: 0},
+        {user: "Daniel", amount: 95},
+        {user: "Leo", amount: 190},
+        {user: "Evan", amount: 190},
       ]
     },
 
