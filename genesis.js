@@ -45,7 +45,7 @@ var Blocks = {
         { sender: "Chris", reciever: "Leo", amount: 100, senderBalance: 0, recieverBalance: 190, fee: 5, signed: true },
       ],
       balances: [
-        {user: "Chris", amount: 0},
+        {user: "Chris", amount: 1000000000},
         {user: "Daniel", amount: 95},
         {user: "Leo", amount: 190},
         {user: "Evan", amount: 190},

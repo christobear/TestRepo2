@@ -30,7 +30,7 @@ while (username == null){
 }
 
 alert('Hello '+ user.name);
-document.getElementById("user").innerHTML += "<h4>You are logged in as " + user.name +"</h4> <br/> <h4> Wallet Balance:" + user.coins+ "</h4> <br/>";
+document.getElementById("user").innerHTML += "<h4>You are logged in as " + user.name +"{'  '}Wallet Balance:" + user.coins+ "</h4> <br/>";
 
 // this is a function to convert any string to a Hash
 function StringToHash (s){
@@ -43,14 +43,24 @@ function postChat(e) {
   const timestamp = Date.now();
   const chatTxt = document.getElementById("chat-txt");
   const msgType = document.getElementById("msg-type");
-  const message = msgType.value + ":" + chatTxt.value;
+  //{"sender":"Chris","reciever":"Evan","amount":95,"senderBalance":400,"recieverBalance":95,"fee":5,"signed":true}
+  //const message = 'NBT:' + '{"sender":"' +user.name+ '","reciever":"'+msgType.value+'","amount":'+ chatTxt.value+',"senderBalance":'+user.coins-chatTxt.value-5+',"recieverBalance":'+msgType.type+chatTxt.value - 5 +',"fee":5, "signed":true}';
+  var r = Users.find(obj => {
+    return obj.name === msgType.value
+  });
+  const fee = 5;
+
+  const message = 'NBT:' + '{"sender":"'+user.name+'","reciever":"'+r.name+'","amount":'+chatTxt.value+',"senderBalance":'+(user.coins - parseInt(chatTxt.value,10) - fee)+',"recieverBalance":'+(r.coins+parseInt(chatTxt.value,10) - fee)+',"fee:"'+fee+',"signed": true}' 
+  console.log(message);
   chatTxt.value = "";
   msgType.value = "";
+  /*
   console.log(message);
   db.ref("messages/" + timestamp).set({
     usr: username,
     msg: message,
   });
+  */
 }
 
 const fetchChat = db.ref("messages/");
